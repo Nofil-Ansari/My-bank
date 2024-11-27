@@ -1,10 +1,11 @@
+#Dictionary is used as a database, named bank_data
 bank_data = [{"CustomerName": "Nofil", "AccountNumber":245645,"AccountType":"Savings Account","BankBalance":10000}, {"CustomerName": "Mujtaba", "AccountNumber":24555,"AccountType":"Current Account","BankBalance":1000}]
-#Account_Number_value = int(input("Enter Account number: "))
-class Bank:
-    def __init__(self,Database,Account_Number_value):
-        self.database = Database
-        self.Account_Number_value = Account_Number_value        
-    def Search_All_Account_Getter(Database): 
+#Account_Number_value = int(input("Enter Account number: ")) #Code written to debug just complete rubbish
+class Bank: #Parent Class hai yeh 
+    def __init__(self,Database,Account_Number_value): #Initilization function hai yeh aur () main parameters hain 
+        self.database = Database #Instance Variable hai yeh, and the value assigned is of Parameters
+        self.Account_Number_value = Account_Number_value #Instance Variable hai yeh, and the value assigned is of Parameters
+    def Search_All_Account_Getter(Database): #Search Function made for retriving information of all bank accounts
         for element in Database:
             return element.values()    
             #print(f"your account details are {element["CustomerName"], element["AccountNumber"],element["AccountType"]}")
@@ -26,7 +27,6 @@ class Customer(Bank):
             if element['AccountNumber'] == Account_Number_value:                
                 return f'Your Bank  Balance is {element["BankBalance"]}'
         return None 
-    #print(BankBalanceGetter(Database))
     def WithdrawSetter(Database,Account_Number_value):
         withdraw_value = int(input("Enter withdraw amount: "))
         for element in Database:
@@ -60,7 +60,7 @@ def Options():
     elif choose == 3:
         print(Customer.DepositSetter(bank_data,Account_Number_value=int(input("Enter Account Number: "))))
     elif choose == 4:
-        print(Bank.CreateAccount(bank_data,Account_Number_value=int(input("Enter Account Number: "))))
+        print(Bank.CreateAccount(bank_data))
     elif choose == 5:
         print(Bank.Search_All_Account_Getter(bank_data))
 Options()
