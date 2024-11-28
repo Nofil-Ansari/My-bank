@@ -1,4 +1,4 @@
-#Dictionary is used as a database, named bank_data
+#A list is declared and each element of list is a Dictionary used as a database, named bank_data
 bank_data = [{"CustomerName": "Nofil", "AccountNumber":245645,"AccountType":"Savings Account","BankBalance":10000}, {"CustomerName": "Mujtaba", "AccountNumber":24555,"AccountType":"Current Account","BankBalance":1000}]
 #Account_Number_value = int(input("Enter Account number: ")) #Code written to debug just complete rubbish
 class Bank: #Parent Class hai yeh 
@@ -6,11 +6,10 @@ class Bank: #Parent Class hai yeh
         self.database = Database #Instance Variable hai yeh, and the value assigned is of Parameters
         self.Account_Number_value = Account_Number_value #Instance Variable hai yeh, and the value assigned is of Parameters
     def Search_All_Account_Getter(Database): #Search Function made for retriving information of all bank accounts
-        for element in Database:
-            return element.values()    
-            #print(f"your account details are {element["CustomerName"], element["AccountNumber"],element["AccountType"]}")
-    #SearchGetter(Database)
-    def CreateAccount(Database):
+        for element in range(len(Database)):
+            print( Database[element])
+        
+    def CreateAccount(Database): #takes necessary data to make account and adds into database 
         global bank_data
         CustomerName = input("Enter Customer Name: ")
         AccountNumber = int(input("Enter Account Number: "))
@@ -19,24 +18,24 @@ class Bank: #Parent Class hai yeh
         Updated_dict = {"CustomerName":CustomerName,"AccountNumber":AccountNumber,"AccountType":AccountType,"Deposit_Amount":Deposit_Amount}
         bank_data.append(Updated_dict)
         return f'Your Account has been added with details {Updated_dict}'            
-class Customer(Bank):
-    def __init__(self, Database):
-        super().__init__(Database) 
-    def BankBalanceGetter(Database,Account_Number_value):
-        for element in Database:
-            if element['AccountNumber'] == Account_Number_value:                
+class Customer(Bank): #This a child Class, it inherits some functionalities from, Bank class 
+    def __init__(self, Database): #This is the Initiliazation function of Class Customer
+        super().__init__(Database) #Yeh Inherited function hai Bank class ka 
+    def BankBalanceGetter(Database,Account_Number_value): #Returns Bank Balance of the searched Account number 
+        for element in Database: #Each Element is being compared with the searched Account number
+            if element['AccountNumber'] == Account_Number_value:  # If the search value matches, bank balance is printed               
                 return f'Your Bank  Balance is {element["BankBalance"]}'
         return None 
-    def WithdrawSetter(Database,Account_Number_value):
-        withdraw_value = int(input("Enter withdraw amount: "))
+    def WithdrawSetter(Database,Account_Number_value): #it subtracts drawn value and returns the bank balance after 
+        withdraw_value = int(input("Enter withdraw amount: ")) 
         for element in Database:
             if element['AccountNumber'] == Account_Number_value:
                 updated_Database_value = element.get("BankBalance") - withdraw_value
                 element.update({"BankBalance":updated_Database_value})
                 return f'Your Bank Balance after withdraw is {element["BankBalance"]}'
         return None 
-    #print(WithdrawSetter(Database))
-    def DepositSetter(Database,Account_Number_value):
+    #print(WithdrawSetter(Database)) #Code written for debugging purposes
+    def DepositSetter(Database,Account_Number_value): # it sums the value of deposited amount into the bank balance 
         Deposit_value = int(input("Enter withdraw amount: "))
         for element in Database:
             if element['AccountNumber'] == Account_Number_value:
@@ -44,7 +43,7 @@ class Customer(Bank):
                 element.update({"BankBalance":updated_Database_value})
                 return f'Your Bank Balance after deposit is {element["BankBalance"]}'
         return None 
-    #print(DepositSetter(Database))    
+    #print(DepositSetter(Database))    #Code written for debugging
 def Options():
     print("""Enter Options: 
     1) Check Bank Balance
@@ -62,6 +61,6 @@ def Options():
     elif choose == 4:
         print(Bank.CreateAccount(bank_data))
     elif choose == 5:
-        print(Bank.Search_All_Account_Getter(bank_data))
+        Bank.Search_All_Account_Getter(bank_data)
 Options()
-print(bank_data)
+#print(bank_data) #code written for debugging 
