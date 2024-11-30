@@ -1,6 +1,7 @@
 #A list is declared and each element of list is a Dictionary used as a database, named bank_data
 bank_data = [{"CustomerName": "Nofil", "AccountNumber":245645,"AccountType":"Savings Account","BankBalance":10000}, {"CustomerName": "Mujtaba", "AccountNumber":24555,"AccountType":"Current Account","BankBalance":1000}]
 #Account_Number_value = int(input("Enter Account number: ")) #Code written to debug just complete rubbish
+
 class Bank: #Parent Class hai yeh 
     def __init__(self,Database,Account_Number_value): #Initilization function hai yeh aur () main parameters hain 
         self.database = Database #Instance Variable hai yeh, and the value assigned is of Parameters
@@ -36,7 +37,7 @@ class Customer(Bank): #This a child Class, it inherits some functionalities from
         return None 
     #print(WithdrawSetter(Database)) #Code written for debugging purposes
     def DepositSetter(Database,Account_Number_value): # it sums the value of deposited amount into the bank balance 
-        Deposit_value = int(input("Enter withdraw amount: "))
+        Deposit_value = int(input("Enter Deposit amount: "))
         for element in Database:
             if element['AccountNumber'] == Account_Number_value:
                 updated_Database_value = element.get("BankBalance") + Deposit_value
