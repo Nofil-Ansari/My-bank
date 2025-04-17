@@ -6,10 +6,6 @@ class Bank: #Parent Class hai yeh
     def __init__(self,Database,Account_Number_value): #Initilization function hai yeh aur () main parameters hain 
         self.database = Database #Instance Variable hai yeh, and the value assigned is of Parameters
         self.Account_Number_value = Account_Number_value #Instance Variable hai yeh, and the value assigned is of Parameters
-    def Search_All_Account_Getter(Database): #Search Function made for retriving information of all bank accounts
-        for element in range(len(Database)):
-            print( Database[element])
-        
     def CreateAccount(Database): #takes necessary data to make account and adds into database 
         global bank_data
         CustomerName = input("Enter Customer Name: ")
@@ -18,7 +14,10 @@ class Bank: #Parent Class hai yeh
         Deposit_Amount = int(input("Enter Bank Deposit amount: "))
         Updated_dict = {"CustomerName":CustomerName,"AccountNumber":AccountNumber,"AccountType":AccountType,"Deposit_Amount":Deposit_Amount}
         bank_data.append(Updated_dict)
-        return f'Your Account has been added with details {Updated_dict}'            
+        return f'Your Account has been added with details {Updated_dict}'
+    def Search_All_Account_Getter(Database): #Search Function made for retriving information of all bank accounts
+        for element in range(len(Database)):
+            print( Database[element])
 class Customer(Bank): #This a child Class, it inherits some functionalities from, Bank class 
     def __init__(self, Database): #This is the Initiliazation function of Class Customer
         super().__init__(Database) #Yeh Inherited function hai Bank class ka 
@@ -47,11 +46,11 @@ class Customer(Bank): #This a child Class, it inherits some functionalities from
     #print(DepositSetter(Database))    #Code written for debugging
 def Options():
     print("""Enter Options: 
-    1) Check Bank Balance
-    2) Withdraw 
-    3) Deposit
-    4) Create Account
-    5) Search information of all the Bank Accounts """)
+    1 Check Bank Balance
+    2 Withdraw 
+    3 Deposit
+    4 Create Account
+    5 Search information of all the Bank Accounts """)
     choose = int(input("Enter the Number of choice:"))
     if choose == 1:
         print(Customer.BankBalanceGetter(bank_data,Account_Number_value=int(input("Enter Account Number: "))))
