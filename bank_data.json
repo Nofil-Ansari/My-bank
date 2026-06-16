@@ -1,0 +1,60 @@
+{
+    "accounts": [
+        {
+            "CustomerName": "Nofil",
+            "AccountNumber": 245645,
+            "AccountType": "Savings Account",
+            "BankBalance": 10001
+        },
+        {
+            "CustomerName": "Mujtaba",
+            "AccountNumber": 24555,
+            "AccountType": "Current Account",
+            "BankBalance": 1000
+        },
+        {
+            "CustomerName": "Xenab",
+            "AccountNumber": 300001,
+            "AccountType": "Savings Account",
+            "BankBalance": 34550
+        }
+    ],
+    "transactions": [
+        {
+            "AccountNumber": 300000,
+            "Type": "Account Created",
+            "Amount": 10000,
+            "BalanceAfter": 10000,
+            "Timestamp": "2026-06-16 05:19:06"
+        },
+        {
+            "AccountNumber": 245645,
+            "Type": "Deposit",
+            "Amount": 1,
+            "BalanceAfter": 10001,
+            "Timestamp": "2026-06-16 05:20:13"
+        },
+        {
+            "AccountNumber": 300000,
+            "Type": "Account Deleted",
+            "Amount": 0,
+            "BalanceAfter": 0,
+            "Timestamp": "2026-06-16 05:32:03"
+        },
+        {
+            "AccountNumber": 300001,
+            "Type": "Account Created",
+            "Amount": 34900,
+            "BalanceAfter": 34900,
+            "Timestamp": "2026-06-16 05:35:20"
+        },
+        {
+            "AccountNumber": 300001,
+            "Type": "Withdrawal",
+            "Amount": 350,
+            "BalanceAfter": 34550,
+            "Timestamp": "2026-06-16 05:36:07"
+        }
+    ],
+    "next_account_number": 300002
+}
